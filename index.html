@@ -63,9 +63,19 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
 /* ---------- KARTU ---------- */
 .card{background:#fff;border:1px solid var(--line);border-radius:22px;
   box-shadow:0 1px 2px rgba(11,11,12,.04),0 14px 32px rgba(11,11,12,.05)}
-.step-num{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
-  border-radius:14px;flex:none;background:linear-gradient(140deg,#FF5C5C,var(--red-dark));
-  color:#fff;font-weight:800;font-size:15px;box-shadow:0 10px 20px rgba(239,43,43,.35)}
+/* ---------- ALUR / TIMELINE ----------
+   Gestalt: common region (panel), continuity (garis antar nomor),
+   similarity (lingkaran seragam), proximity (rapet di dalam, lega antar) */
+.flow{position:relative}
+.flow-step{position:relative;padding-left:64px;padding-bottom:30px}
+.flow-step:last-child{padding-bottom:0}
+.flow-step:not(:last-child)::before{content:"";position:absolute;left:22px;top:52px;bottom:0;width:2px;
+  background:linear-gradient(var(--red),rgba(239,43,43,.16))}
+.flow-num{position:absolute;left:0;top:0;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(140deg,#FF5C5C,var(--red-dark));color:#fff;font-weight:800;font-size:17px;
+  box-shadow:0 8px 16px rgba(239,43,43,.3);border:3px solid #fff;z-index:1}
+.flow-step h3{font-size:1.075rem;font-weight:700;line-height:1.3;padding-top:9px}
+.flow-step p{margin-top:5px;font-size:15px;color:var(--muted);line-height:1.62}
 
 /* ---------- BUKTI ---------- */
 .proof-frame{position:relative;background:#0B0B0C;border-radius:20px;padding:12px;
@@ -172,48 +182,34 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset
     <h2 class="text-2xl font-extrabold tracking-tight mb-1">Cara pakainya</h2>
     <p class="text-[15px] text-gray-600 mb-6">Chat admin dulu, sisanya tinggal ngikutin.</p>
 
-    <ol class="space-y-4">
-      <li class="card p-6 flex gap-5 items-start">
-        <span class="step-num">1</span>
-        <div>
-          <h3 class="text-lg font-bold">Chat admin</h3>
-          <p class="mt-1 text-[15px] text-gray-600 leading-relaxed">
-            Bilang kamu mau Consensus. Admin bakal ngirim <b>email</b> sama <b>password</b> buat masuk.
-          </p>
-          <a class="btn-wa mt-3" style="font-size:14px;padding:11px 20px" href="https://wa.me/6285117159634?text=Halo%20admin%2C%20saya%20mau%20akses%20Consensus" target="_blank" rel="noopener">
+    <div class="card p-7 sm:p-8">
+      <ol class="flow">
+        <li class="flow-step">
+          <span class="flow-num">1</span>
+          <h3>Chat admin</h3>
+          <p>Bilang kamu mau Consensus. Admin bakal ngirim <b>email</b> sama <b>password</b> buat masuk.</p>
+          <a class="btn-wa mt-4" style="font-size:14px;padding:11px 20px" href="https://wa.me/6285117159634?text=Halo%20admin%2C%20saya%20mau%20akses%20Consensus" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1s-.8 1-.9 1.2c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.5.7.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.5M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
             Chat admin sekarang
           </a>
-        </div>
-      </li>
-      <li class="card p-6 flex gap-5 items-start">
-        <span class="step-num">2</span>
-        <div>
-          <h3 class="text-lg font-bold">Masukin email</h3>
-          <p class="mt-1 text-[15px] text-gray-600 leading-relaxed">
-            Buka <a href="https://consensus.app" target="_blank" rel="noopener" class="font-semibold text-[color:var(--red)] underline underline-offset-2">consensus.app</a>, klik <b>Log in</b>, terus tempel email dari admin.
-          </p>
-        </div>
-      </li>
-      <li class="card p-6 flex gap-5 items-start">
-        <span class="step-num">3</span>
-        <div>
-          <h3 class="text-lg font-bold">Pilih pakai password</h3>
-          <p class="mt-1 text-[15px] text-gray-600 leading-relaxed">
-            Klik tulisan <b>Use password</b> (bukan yang kirim kode ke email). Tempel password dari admin.
-          </p>
-        </div>
-      </li>
-      <li class="card p-6 flex gap-5 items-start">
-        <span class="step-num">4</span>
-        <div>
-          <h3 class="text-lg font-bold">Selesai</h3>
-          <p class="mt-1 text-[15px] text-gray-600 leading-relaxed">
-            Kamu langsung masuk dan bisa mulai nyari jurnal. Gak perlu ngapa-ngapain lagi.
-          </p>
-        </div>
-      </li>
-    </ol>
+        </li>
+        <li class="flow-step">
+          <span class="flow-num">2</span>
+          <h3>Masukin email</h3>
+          <p>Buka <a href="https://consensus.app" target="_blank" rel="noopener" class="font-semibold text-[color:var(--red)] underline underline-offset-2">consensus.app</a>, klik <b>Log in</b>, terus tempel email dari admin.</p>
+        </li>
+        <li class="flow-step">
+          <span class="flow-num">3</span>
+          <h3>Pilih pakai password</h3>
+          <p>Klik tulisan <b>Use password</b> (bukan yang kirim kode ke email). Tempel password dari admin.</p>
+        </li>
+        <li class="flow-step">
+          <span class="flow-num">4</span>
+          <h3>Selesai</h3>
+          <p>Kamu langsung masuk dan bisa mulai nyari jurnal. Gak perlu ngapa-ngapain lagi.</p>
+        </li>
+      </ol>
+    </div>
   </section>
 </main>
 
