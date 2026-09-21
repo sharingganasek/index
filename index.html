@@ -1,183 +1,268 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOP Login Consensus - Protokol Akses</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0A0A0A;
-            color: #E0E0E0;
-            background-image:
-                radial-gradient(at 27% 37%, hsla(215, 98%, 61%, 0.1) 0px, transparent 50%),
-                radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 0.1) 0px, transparent 50%),
-                radial-gradient(at 52% 99%, hsla(355, 98%, 71%, 0.1) 0px, transparent 50%),
-                radial-gradient(at 10% 29%, hsla(256, 96%, 68%, 0.1) 0px, transparent 50%),
-                radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 0.1) 0px, transparent 50%),
-                radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 0.1) 0px, transparent 50%),
-                radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 0.1) 0px, transparent 50%);
-        }
-        .step-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-        .step-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: rgba(0, 255, 255, 0.5);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
-        }
-        .step-number {
-            font-weight: 900;
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.1);
-            position: absolute;
-            top: -1rem;
-            right: 1rem;
-            z-index: 0;
-            line-height: 1;
-        }
-        .highlight-text {
-            color: #00FFFF; /* Cyan */
-            font-weight: 500;
-            background-color: rgba(0, 255, 255, 0.1);
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-        .btn-action {
-            background-color: #00FFFF;
-            color: #0A0A0A;
-            font-weight: 700;
-            transition: all 0.2s ease;
-        }
-        .btn-action:hover {
-            background-color: #FFFFFF;
-            box-shadow: 0 0 15px #00FFFF;
-        }
-        .final-card {
-            background: linear-gradient(145deg, rgba(0, 255, 255, 0.1), rgba(128, 0, 128, 0.1));
-            border: 1px solid rgba(0, 255, 255, 0.3);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akses Consensus · Sharing Gan</title>
+<meta name="description" content="Cara dapat akses Consensus premium dari Sharing Gan. Aksesnya dibuka lewat admin, tinggal chat WhatsApp.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F6F4; --ink:#0B0B0C; --muted:#6B7280;
+  --red:#EF2B2B; --red-dark:#C81E1E; --line:#ECEAE6;
+}
+*{-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+
+a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:8px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(239,43,43,0.28) 0%, transparent 55%),
+    radial-gradient(80% 60% at 85% 20%, rgba(239,43,43,0.16) 0%, transparent 60%),
+    #08080A;}
+.hero::after{content:"";position:absolute;inset-inline:0;bottom:-1px;height:120px;
+  background:linear-gradient(to bottom,transparent,var(--bg))}
+.grid-mask{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.045) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(70% 60% at 50% 35%,#000 0%,transparent 75%);
+          mask-image:radial-gradient(70% 60% at 50% 35%,#000 0%,transparent 75%)}
+.cloud{position:absolute;opacity:.16;filter:drop-shadow(0 8px 30px rgba(239,43,43,.45))}
+.cloud.float{animation:float 9s ease-in-out infinite}
+.cloud.float.slow{animation-duration:13s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.eye-wrap{animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.tomoe-spin{transform-origin:100px 100px;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.eye-glow{filter:drop-shadow(0 0 30px rgba(239,43,43,.55))}
+
+.pill-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:7px 16px;font-size:12px;
+  font-weight:700;letter-spacing:.14em;color:#fff;backdrop-filter:blur(6px)}
+.pill-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
+.grad-red{background:linear-gradient(120deg,#FF6A6A,var(--red) 55%,#FF8A3D);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- TOMBOL ---------- */
+.btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--red);
+  color:#fff;font-weight:800;font-size:16px;padding:16px 30px;border-radius:999px;text-decoration:none;
+  transition:background .2s ease,transform .2s ease;box-shadow:0 14px 30px rgba(239,43,43,.38)}
+.btn-wa:hover{background:var(--red-dark);transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.22);
+  color:rgba(255,255,255,.85);font-weight:600;font-size:14px;padding:13px 22px;border-radius:999px;
+  text-decoration:none;transition:background .2s ease,border-color .2s ease}
+.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.4)}
+
+/* ---------- KARTU ---------- */
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;
+  box-shadow:0 1px 2px rgba(11,11,12,.04),0 14px 32px rgba(11,11,12,.05)}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
+  border-radius:14px;flex:none;background:linear-gradient(140deg,#FF5C5C,var(--red-dark));
+  color:#fff;font-weight:800;font-size:15px;box-shadow:0 10px 20px rgba(239,43,43,.35)}
+
+/* ---------- BUKTI ---------- */
+.proof-frame{position:relative;background:#0B0B0C;border-radius:20px;padding:12px;
+  box-shadow:0 26px 54px rgba(11,11,12,.22);overflow:hidden}
+.proof-frame img{display:block;width:100%;border-radius:12px}
+.proof-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(239,43,43,.09);
+  border:1px solid rgba(239,43,43,.25);color:var(--red);padding:6px 13px;border-radius:999px;
+  font-size:12.5px;font-weight:700}
+
+.warning-box{display:flex;gap:10px;background:#FFF8E6;border:1px solid #F4D58A;border-radius:12px;
+  padding:14px 16px;font-size:.88rem;color:#92670B;line-height:1.6}
+
+.contact-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--line);
+  border-radius:14px;background:#fff;text-decoration:none;color:var(--ink);
+  transition:border-color .2s ease,background .2s ease}
+.contact-row:hover{border-color:rgba(239,43,43,.45);background:rgba(239,43,43,.04)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.on{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body>
 
-    <div class="w-full max-w-3xl mx-auto">
-        <!-- Header -->
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Protokol Akses: Consensus</span>
-            </h1>
-            <p class="text-lg text-gray-400 mt-2">Standard Operating Procedure (SOP) untuk Login</p>
-        </header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="akcloud" fill="#EF2B2B" stroke="rgba(255,255,255,0.5)" stroke-width="2">
+    <path d="M28 64c-11 0-19-7-19-16 0-8 6-14 14-15 1-9 9-16 19-16 7 0 13 4 16 9 3-2 7-3 11-3 9 0 17 6 18 15 8 0 14 6 14 13 0 8-7 13-16 13H28z"/>
+  </g>
+  <g id="sharingan">
+    <circle cx="100" cy="100" r="96" fill="#0B0B0C"/>
+    <circle cx="100" cy="100" r="92" fill="none" stroke="#EF2B2B" stroke-width="3" opacity="0.5"/>
+    <circle cx="100" cy="100" r="74" fill="#EF2B2B"/>
+    <circle cx="100" cy="100" r="74" fill="url(#irisGrad)"/>
+    <circle cx="100" cy="100" r="44" fill="none" stroke="#0B0B0C" stroke-width="3" opacity="0.55"/>
+    <g class="tomoe-spin" fill="#0B0B0C">
+      <g transform="rotate(0 100 100)"><circle cx="100" cy="52" r="11"/><path d="M89 52 Q100 74 111 52 Z"/></g>
+      <g transform="rotate(120 100 100)"><circle cx="100" cy="52" r="11"/><path d="M89 52 Q100 74 111 52 Z"/></g>
+      <g transform="rotate(240 100 100)"><circle cx="100" cy="52" r="11"/><path d="M89 52 Q100 74 111 52 Z"/></g>
+    </g>
+    <circle cx="100" cy="100" r="16" fill="#0B0B0C"/>
+    <circle cx="94" cy="94" r="5" fill="#fff" opacity="0.85"/>
+  </g>
+  <radialGradient id="irisGrad" cx="42%" cy="38%" r="70%">
+    <stop offset="0%" stop-color="#FF6A6A"/><stop offset="60%" stop-color="#EF2B2B"/><stop offset="100%" stop-color="#B81818"/>
+  </radialGradient>
+</defs></svg>
 
-        <!-- Steps Grid -->
-        <div class="space-y-6">
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="grid-mask" aria-hidden="true"></div>
+  <svg class="cloud float" style="top:14%;left:6%;width:120px" viewBox="0 0 120 90" aria-hidden="true"><use href="#akcloud"/></svg>
+  <svg class="cloud float slow" style="top:20%;right:8%;width:150px" viewBox="0 0 120 90" aria-hidden="true"><use href="#akcloud"/></svg>
+  <svg class="cloud float slow" style="bottom:26%;left:12%;width:90px" viewBox="0 0 120 90" aria-hidden="true"><use href="#akcloud"/></svg>
+  <svg class="cloud float" style="bottom:32%;right:14%;width:70px" viewBox="0 0 120 90" aria-hidden="true"><use href="#akcloud"/></svg>
 
-            <!-- Step 1: Akses Website -->
-            <div class="step-card rounded-xl p-6 relative overflow-hidden">
-                <span class="step-number">01</span>
-                <div class="relative z-10 flex items-start space-x-4">
-                    <div class="flex-shrink-0 bg-cyan-500/10 text-cyan-400 rounded-lg p-2">
-                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m0 18a9 9 0 009-9m-9 9a9 9 0 00-9-9"/></svg>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-bold text-white">Akses Website</h2>
-                        <p class="text-gray-300 mt-1">Buka browser Anda dan navigasi ke alamat berikut.</p>
-                        <a href="https://consensus.app" target="_blank" class="mt-3 inline-block btn-action px-4 py-2 rounded-lg text-sm">
-                            Buka Consensus.app
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 2 & 3: Login & Email -->
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="step-card rounded-xl p-6 relative overflow-hidden">
-                    <span class="step-number">02</span>
-                    <div class="relative z-10">
-                        <div class="bg-purple-500/10 text-purple-400 rounded-lg p-2 w-min mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" /></svg>
-                        </div>
-                        <h2 class="text-xl font-bold text-white">Mulai Login</h2>
-                        <p class="text-gray-300 mt-1">Klik tombol <span class="highlight-text">Log in / Sign in</span>, lalu pilih <span class="highlight-text">Continue with email</span>.</p>
-                    </div>
-                </div>
-                <div class="step-card rounded-xl p-6 relative overflow-hidden">
-                    <span class="step-number">03</span>
-                    <div class="relative z-10">
-                         <div class="bg-pink-500/10 text-pink-400 rounded-lg p-2 w-min mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" /></svg>
-                        </div>
-                        <h2 class="text-xl font-bold text-white">Masukkan Email</h2>
-                        <p class="text-gray-300 mt-1">Gunakan alamat email berikut dan klik <span class="highlight-text">Continue</span>.</p>
-                        <p class="mt-2 text-md font-mono bg-gray-900 p-2 rounded-md break-all">gansharing99@gmail.com</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 4: Buka Mailinator -->
-             <div class="step-card rounded-xl p-6 relative overflow-hidden">
-                <span class="step-number">04</span>
-                <div class="relative z-10 flex items-start space-x-4">
-                    <div class="flex-shrink-0 bg-green-500/10 text-green-400 rounded-lg p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" /></svg>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-bold text-white">Buka Mailinator</h2>
-                        <p class="text-gray-300 mt-1">Buka tab baru, masuk ke Mailinator dan cek inbox publik:</p>
-                        <p class="mt-2 text-md font-mono bg-gray-900 p-2 rounded-md break-all">consensussharingan</p>
-                        <a href="https://www.mailinator.com/" target="_blank" class="mt-3 inline-block btn-action px-4 py-2 rounded-lg text-sm">
-                            Buka Mailinator
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 5 & 6: Ambil OTP & Verifikasi -->
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="step-card rounded-xl p-6 relative overflow-hidden">
-                    <span class="step-number">05</span>
-                    <div class="relative z-10">
-                        <div class="bg-yellow-500/10 text-yellow-400 rounded-lg p-2 w-min mb-3">
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" /></svg>
-                        </div>
-                        <h2 class="text-xl font-bold text-white">Ambil OTP</h2>
-                        <p class="text-gray-300 mt-1">Cari email dari Consensus, buka dan salin kode OTP (6 digit) atau klik "magic link".</p>
-                    </div>
-                </div>
-                 <div class="step-card rounded-xl p-6 relative overflow-hidden">
-                    <span class="step-number">06</span>
-                    <div class="relative z-10">
-                        <div class="bg-blue-500/10 text-blue-400 rounded-lg p-2 w-min mb-3">
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        </div>
-                        <h2 class="text-xl font-bold text-white">Verifikasi Login</h2>
-                        <p class="text-gray-300 mt-1">Kembali ke tab Consensus, masukkan kode OTP, lalu klik <span class="highlight-text">Submit / Verify</span>.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 7: Selesai -->
-            <div class="step-card final-card rounded-xl p-8 relative overflow-hidden text-center">
-                <div class="relative z-10">
-                    <div class="bg-white/20 text-white rounded-full p-3 w-min mx-auto mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                    </div>
-                    <h2 class="text-2xl font-bold text-white">Selesai ?</h2>
-                    <p class="text-gray-200 mt-2 text-lg">Anda sudah berhasil login ke Consensus. Sistem terverifikasi.</p>
-                </div>
-            </div>
-
-        </div>
+  <div class="relative max-w-3xl mx-auto px-6 pt-14 pb-24 text-center">
+    <div class="eye-wrap inline-block w-20 h-20 mb-7">
+      <svg class="w-full h-full eye-glow" viewBox="0 0 200 200" aria-hidden="true"><use href="#sharingan"/></svg>
     </div>
 
+    <div class="mb-6"><span class="pill-badge"><span class="dot"></span>SHARINGAN.ID</span></div>
+
+    <h1 class="text-4xl sm:text-5xl font-black leading-[1.08] tracking-tight">
+      Akses <span class="grad-red">Consensus</span>
+    </h1>
+
+    <p class="mt-5 text-base sm:text-lg text-white/70 leading-relaxed max-w-xl mx-auto">
+      Consensus premium buat nyari jurnal dan bikin ringkasan riset.
+      Aksesnya dibuka admin satu per satu, jadi slot kamu gak rebutan sama orang luar.
+    </p>
+
+    <div class="mt-9 flex flex-col sm:flex-row gap-3 justify-center items-center">
+      <a class="btn-wa" href="https://wa.me/6285117159634?text=Halo%20admin%2C%20saya%20mau%20akses%20Consensus" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1s-.8 1-.9 1.2c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.5.7.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.5M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+        Chat admin di WhatsApp
+      </a>
+      <a class="btn-ghost" href="#cara">Lihat caranya dulu</a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-3xl mx-auto px-6 -mt-10 relative pb-20">
+
+  <!-- ============ BUKTI LANGGANAN ============ -->
+  <section class="reveal card p-6 sm:p-8 mb-10">
+    <span class="proof-tag">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+      Langganan aktif
+    </span>
+    <h2 class="mt-4 text-2xl font-extrabold tracking-tight">Akunnya beneran premium</h2>
+    <p class="mt-2 text-[15px] text-gray-600 leading-relaxed">
+      Ini tangkapan layar status langganan yang dipakai bareng member Sharing Gan.
+    </p>
+
+    <figure class="proof-frame mt-6">
+      <img src="bukti-langganan.png" alt="Tangkapan layar status langganan Consensus premium"
+           onerror="this.closest('section').remove()">
+    </figure>
+  </section>
+
+  <!-- ============ CARA ============ -->
+  <section id="cara" class="reveal mb-10">
+    <h2 class="text-2xl font-extrabold tracking-tight mb-1">Cara dapat aksesnya</h2>
+    <p class="text-[15px] text-gray-600 mb-6">Tiga langkah, semuanya lewat chat.</p>
+
+    <ol class="space-y-4">
+      <li class="card p-6 flex gap-5 items-start">
+        <span class="step-num">1</span>
+        <div>
+          <h3 class="text-lg font-bold">Chat admin</h3>
+          <p class="mt-1 text-[15px] text-gray-600 leading-relaxed">
+            Pencet tombol WhatsApp di atas. Sebutin paket yang kamu ambil biar admin gampang nyocokin datanya.
+          </p>
+        </div>
+      </li>
+      <li class="card p-6 flex gap-5 items-start">
+        <span class="step-num">2</span>
+        <div>
+          <h3 class="text-lg font-bold">Admin siapin slot kamu</h3>
+          <p class="mt-1 text-[15px] text-gray-600 leading-relaxed">
+            Admin ngecek masa aktif langganan kamu, terus ngirim cara masuknya langsung di chat.
+          </p>
+        </div>
+      </li>
+      <li class="card p-6 flex gap-5 items-start">
+        <span class="step-num">3</span>
+        <div>
+          <h3 class="text-lg font-bold">Tinggal dipakai</h3>
+          <p class="mt-1 text-[15px] text-gray-600 leading-relaxed">
+            Buka <a href="https://consensus.app" target="_blank" rel="noopener" class="font-semibold text-[color:var(--red)] underline underline-offset-2">consensus.app</a>, masuk pakai akses dari admin, langsung bisa nyari jurnal.
+          </p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="warning-box mt-5">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="flex-none mt-px" aria-hidden="true"><path d="M12 2 1 21h22zm0 5 7.5 12h-15zM11 10v5h2v-5zm0 6v2h2v-2z"/></svg>
+      <span>Akses kamu cuma buat kamu. Kalau dipakai rame-rame di luar langganan, Consensus bakal ngunci akunnya sendiri dan semua member kena.</span>
+    </div>
+  </section>
+
+  <!-- ============ KENAPA LEWAT ADMIN ============ -->
+  <section class="reveal card p-6 sm:p-8 mb-10">
+    <h2 class="text-2xl font-extrabold tracking-tight">Kenapa gak langsung dikasih di sini</h2>
+    <p class="mt-3 text-[15px] text-gray-600 leading-relaxed">
+      Halaman ini bisa dibuka siapa aja yang punya linknya, termasuk orang yang gak langganan.
+      Kalau cara masuknya ditulis di sini, orang luar ikut nimbrung, akunnya penuh, dan yang udah bayar malah kelempar keluar.
+      Lewat admin, tiap slot kecatat dan kamu gak kesenggol.
+    </p>
+  </section>
+
+  <!-- ============ KONTAK ============ -->
+  <section class="reveal">
+    <h2 class="text-2xl font-extrabold tracking-tight mb-4">Hubungi Sharing Gan</h2>
+    <div class="space-y-3">
+      <a class="contact-row" href="https://wa.me/6285117159634?text=Halo%20admin%2C%20saya%20mau%20akses%20Consensus" target="_blank" rel="noopener">
+        <span class="w-10 h-10 rounded-xl flex-none grid place-items-center text-white" style="background:var(--red)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1s-.8 1-.9 1.2c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.5.7.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.5M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+        </span>
+        <span>
+          <span class="block font-bold">WhatsApp admin</span>
+          <span class="block text-sm text-gray-500">0851-1715-9634 · paling cepat dibalas</span>
+        </span>
+      </a>
+      <!-- EMAIL KONTAK: isi alamatnya, lalu hapus tanda komentar ini
+      <a class="contact-row" href="mailto:GANTI@sharingan.id">
+        <span class="w-10 h-10 rounded-xl flex-none grid place-items-center text-white" style="background:var(--ink)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 4-8 5-8-5V6l8 5 8-5z"/></svg>
+        </span>
+        <span>
+          <span class="block font-bold">Email</span>
+          <span class="block text-sm text-gray-500">GANTI@sharingan.id</span>
+        </span>
+      </a>
+      -->
+    </div>
+  </section>
+</main>
+
+<footer class="border-t" style="border-color:var(--line)">
+  <div class="max-w-3xl mx-auto px-6 py-8 flex flex-col sm:flex-row gap-3 items-center justify-between text-sm text-gray-500">
+    <span class="flex items-center gap-2">
+      <svg class="w-5 h-5" viewBox="0 0 200 200" aria-hidden="true"><use href="#sharingan"/></svg>
+      <b class="text-[color:var(--ink)]">sharingan.id</b>
+    </span>
+    <span>Consensus bukan punya Sharing Gan. Kami cuma nyediain akses langganannya.</span>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
-
